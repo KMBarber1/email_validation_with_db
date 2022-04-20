@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+
+</head>
+<body>
+
+    <div>
+
+        <div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %} 
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+        <h2>The email address you entered (_____) is a valid email address! Thank you!</h2>
+
+        <h3>Email Addresses Entered:</h3>
+
+        {% for email in emails %}
+            <p>{{email.email}}  {{email.created_at}} <a href="/delete/{{email.id}}">Delete</a></p>
+        {% endfor %}
+        
+    </div>
+</body>
+</html>
